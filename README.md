@@ -72,6 +72,62 @@ Generate a video from a prompt file:
 
 - [FreeVideo Adaptive Execution Planner](docs/execution-planning.md)
 
+## Rust Implementation (`freevideo-rs`)
+
+FreeVideo includes a high-performance native Rust implementation of the FreeVideo engine and CLI:
+
+- **`freevideo-core`**: Core library featuring the complete hardware-aware adaptive planner, Safetensors tensor inspection & layer bisection, SQLite-backed telemetry history (Schema v6), regression forecasting, and capacity grid benchmarking.
+- **`freevideo` CLI**: Native binary with comprehensive subcommands:
+
+### Building from Source
+
+```bash
+cargo build --release
+```
+
+The compiled binary will be placed at `target/release/freevideo`.
+
+### Rust CLI Commands
+
+- **Plan**: Inspect hardware-aware allocation policy without loading weights:
+  ```bash
+  ./target/release/freevideo plan --width 1344 --height 768 --frames 243
+  ```
+- **Predict**: Preview stage execution timings and VRAM/RAM headroom from local history:
+  ```bash
+  ./target/release/freevideo predict --width 1344 --height 768 --frames 243
+  ```
+- **Doctor**: Run capability diagnostics and path readiness checks:
+  ```bash
+  ./target/release/freevideo doctor
+  ```
+- **Benchmark**: Simulate capacity grids across GPU tiers (Ampere, Ada, Hopper, Blackwell):
+  ```bash
+  ./target/release/freevideo bench --width 1344 --height 768 --frames 243
+  ```
+- **Models**: Inspect and verify official manifests (`model_files.json`, `prepared_models.json`):
+  ```bash
+  ./target/release/freevideo models list
+  ./target/release/freevideo models verify --manifest freevideo_engine/prepared_models.json --root .
+  ```
+- **History**: Inspect durable resource measurements and recover interrupted runs:
+  ```bash
+  ./target/release/freevideo history list
+  ./target/release/freevideo history recover
+  ```
+- **Generate**: Preview two-pass latent upscaling and adaptive generation execution:
+  ```bash
+  ./target/release/freevideo generate --out video.mp4 --width 1344 --height 768 --frames 243
+  ```
+
+### Running Tests
+
+```bash
+cargo test --workspace
+cargo clippy --workspace -- -D warnings
+cargo fmt --check
+```
+
 ### Support
 
 Report bugs in [GitHub Issues](https://github.com/FlashML-org/FreeVideo/issues), or ask questions on [Discord](https://discord.gg/MsA277cJzZ), [QQ](https://freevideo-community.pages.dev/qq) or [WeChat](https://freevideo-community.pages.dev/wechat).
