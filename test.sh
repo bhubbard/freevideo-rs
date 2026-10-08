@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-FREEVIDEO_SOURCE_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-export PYTHONPATH="$FREEVIDEO_SOURCE_DIR${PYTHONPATH:+:$PYTHONPATH}"
-source "$FREEVIDEO_SOURCE_DIR/scripts/bootstrap_linux.sh"
-freevideo_bootstrap_linux test "$@"
-(( FREEVIDEO_BOOTSTRAP_DONE == 0 )) || exit 0
-exec "$FREEVIDEO_BOOTSTRAP_PYTHON" -B -X utf8 -m freevideo_engine.test_launcher "${FREEVIDEO_BOOTSTRAP_ARGS[@]}"
