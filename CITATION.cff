@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+message: "FreeVideo runs VDN-H3. If you use FreeVideo in your research, please cite the Video DeltaNet paper."
+title: FreeVideo
+type: software
+license: Apache-2.0
+repository-code: "https://github.com/FlashML-org/FreeVideo"
+authors:
+  - given-names: Bowen
+    family-names: Xue
+  - given-names: Shuo
+    family-names: Yang
+  - given-names: Haocheng
+    family-names: Xi
+  - given-names: Xiaoze
+    family-names: Fan
+  - given-names: Chenfeng
+    family-names: Xu
+preferred-citation:
+  type: article
+  title: "Video DeltaNet: A Video-Native Hybrid Attention for Livestream Video Generation"
+  journal: "arXiv preprint arXiv:2609.20744"
+  year: 2026
+  url: "https://arxiv.org/abs/2609.20744"
+  identifiers:
+    - type: other
+      value: "arXiv:2609.20744"
+  authors:
+    - given-names: Haocheng
+      family-names: Xi
+    - given-names: Yiming
+      family-names: Xie
+    - given-names: Hexu
+      family-names: Zhao
+    - given-names: Yiwen
+      family-names: Zhang
+    - given-names: Michael
+      family-names: Liu
+    - given-names: Thomas
+      family-names: Creavin
+    - given-names: Kurt
+      family-names: Keutzer
+    - given-names: Xiuyu
+      family-names: Li
+    - given-names: Zhaoyang
+      family-names: Lv
+    - given-names: Chenfeng
+      family-names: Xu
+    - given-names: Haiwen
+      family-names: Feng

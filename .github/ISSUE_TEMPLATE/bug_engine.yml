@@ -1,0 +1,19 @@
+name: Video generation / 视频生成
+description: Errors, output quality or performance / 生成报错、画面质量或速度问题
+body:
+  - type: input
+    id: version
+    attributes:
+      label: FreeVideo version / FreeVideo 版本
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened? / 遇到了什么问题？
+      description: Describe what you expected and what happened. / 简单说明预期效果和实际情况。
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Error or local report (optional) / 错误详情或本地报告（选填）
+      description: Attach video.debug.json if available; it includes hardware and timing information. / 如有 video.debug.json，可拖入此处；其中已包含硬件和耗时信息。

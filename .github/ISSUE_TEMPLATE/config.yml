@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Discord
+    url: https://discord.gg/MsA277cJzZ
+    about: Community chat / 社区交流
+  - name: QQ Group / QQ 群
+    url: https://freevideo-community.pages.dev/qq
+    about: Community chat / 社区交流
+  - name: WeChat Group / 微信群
+    url: https://freevideo-community.pages.dev/wechat
+    about: Community chat / 社区交流

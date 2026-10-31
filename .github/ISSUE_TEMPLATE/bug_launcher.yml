@@ -1,0 +1,19 @@
+name: Installation or launcher / 安装或启动器
+description: Help with installation, updates or startup / 安装、更新或启动问题
+body:
+  - type: input
+    id: version
+    attributes:
+      label: FreeVideo version / FreeVideo 版本
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened? / 遇到了什么问题？
+      description: Describe what you did and what happened. / 简单说明操作和出现的问题。
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Error or local report (optional) / 错误详情或本地报告（选填）
+      description: Paste the error or drag a local diagnostic report here. / 粘贴错误详情，或拖入本地诊断报告。

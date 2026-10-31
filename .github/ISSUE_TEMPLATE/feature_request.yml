@@ -1,0 +1,9 @@
+name: Suggestion / 建议
+description: Tell us what would help / 说说你希望改进什么
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like to do? / 你希望实现什么？
+    validations:
+      required: true
