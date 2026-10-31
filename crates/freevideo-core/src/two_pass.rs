@@ -82,6 +82,27 @@ pub struct SamplingPlan {
     pub reason: String,
 }
 
+impl SamplingPlan {
+    /// Computes the relative spatial-step compute reduction ratio achieved by running
+    /// `base_steps` at the reduced Pass 1 resolution (`first`) followed by `refine_steps`
+    /// at the full Pass 2 resolution (`second`), compared against running `total_steps`
+    /// at full resolution.
+    pub fn compute_spatial_savings(&self) -> f64 {
+        let Some(ref second) = self.second else {
+            return 0.0;
+        };
+        let first_area = (self.first.width as f64) * (self.first.height as f64);
+        let second_area = (second.width as f64) * (second.height as f64);
+        let full_work = second_area * (self.total_steps as f64);
+        if full_work <= 0.0 {
+            return 0.0;
+        }
+        let two_pass_work =
+            first_area * (self.base_steps as f64) + second_area * (self.refine_steps as f64);
+        (1.0 - (two_pass_work / full_work)).clamp(0.0, 1.0)
+    }
+}
+
 pub fn plan(
     canvas: &Canvas,
     enabled: bool,
@@ -253,7 +274,9 @@ mod tests {
         assert_eq!(p.first.width, 672);
         assert_eq!(p.first.height, 384);
         assert_eq!(p.upscale_target.as_ref().unwrap().width, 1344);
-        assert_eq!(p.upscale_target.as_ref().unwrap().height, 768);
+        assert_eq!(p.upscale_target.as_ref().unwrap().height, 384 * 2);
         assert_eq!(p.crop.as_ref().unwrap().left, 0);
+        // 8 steps at 1/4 area (2.0 full-area eq) + 2 steps at full area = 4.0 vs 10.0 -> 60% savings
+        assert!((p.compute_spatial_savings() - 0.60).abs() < 1e-6);
     }
 }

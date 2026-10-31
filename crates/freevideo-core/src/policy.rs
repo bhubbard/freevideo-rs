@@ -224,6 +224,7 @@ impl Policy {
     }
 }
 
+#[allow(clippy::too_many_arguments)]
 pub fn choose(
     hardware: &Hardware,
     vram_gib: Option<f64>,
