@@ -15,6 +15,7 @@ pub mod policy;
 pub mod prediction;
 pub mod prediction_policy;
 pub mod system;
+pub mod tracking_stab;
 pub mod two_pass;
 pub mod weights;
 
@@ -30,5 +31,8 @@ pub use models::{
 pub use policy::{choose, resource_budget, Policy, ResourceBudget, ResourceBudgetError};
 pub use prediction::{predict, ForecastReport};
 pub use prediction_policy::select_candidate;
+pub use tracking_stab::{
+    AffineMotion2D, CoTrackerWindow, RifeInterpolator, TrackedPoint, VidStabEngine,
+};
 pub use two_pass::{plan as plan_two_pass, steps_from_plan, SamplingPlan};
 pub use weights::{group_name, inspect_safetensors, interleaved_layer_order, sha256_file};
